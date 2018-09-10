@@ -32,7 +32,6 @@ class MachineController extends Controller
         $machines = Machine::with(['programsBorderBy' => function ($query) {
             $query->orderBy('programs.delivery_date', 'desc');
         }])->orderBy('capacity', 'desc')->get();
-//        dd($machines);
         return view('dyeing.programs.list-view', compact('machines'));
     }
 
@@ -42,8 +41,6 @@ class MachineController extends Controller
         $machines = Machine::with(['programsBorderBy' => function ($query) {
             $query->orderBy('programs.delivery_date', 'desc');
         }])->orderBy('capacity', 'desc')->get();
-
-//        return view('excel.programs-list-view', compact('machines'));
 
         $excel =  Excel::create('Dyeing Programs', function($excel) use ($machines) {
 
@@ -66,8 +63,6 @@ class MachineController extends Controller
         $machines = Machine::with(['programsBorderBy' => function ($query) {
             $query->orderBy('programs.delivery_date', 'desc');
         }])->orderBy('capacity', 'desc')->get();
-
-//        return view('pdf.programs-list-view', compact('machines'));
 
         $pdf = PDF::loadView('pdf.programs-list-view', ['machines' => $machines]);
         return $pdf->download('DyeingPrograms.pdf');

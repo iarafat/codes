@@ -16,9 +16,7 @@ class Program extends Model
     {
         parent::boot();
 
-        Pivot::created(function ($pivot) {
-            dd($pivot);
-        });
+        Pivot::created(function ($pivot) {});
     }
 
     // store method

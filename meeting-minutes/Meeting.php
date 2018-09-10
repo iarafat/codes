@@ -51,9 +51,6 @@ class Meeting extends Model
     /**
      * Get the agendas for the meeting.
      */
-    /*public function agendas() {
-        return $this->hasMany(Agenda::class);
-    }*/
     public function agendas()
     {
         return $this->morphMany(Agenda::class, 'agendatable');

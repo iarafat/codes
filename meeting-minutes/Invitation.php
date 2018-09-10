@@ -85,11 +85,6 @@ class Invitation extends Model
         return $query->with('projects.locations', 'locations')->where('status', 'done')->orWhere('status', 'cancel')->orderBy('id', 'desc')->get();
     }
 
-
-    public function scopeEditInvitation($query, $id)
-    {
-
-    }
     /**
      * get the Invitation With all Relations
      */
@@ -104,6 +99,7 @@ class Invitation extends Model
 
         ])->first();
     }
+    
     public function scopeTrashInvitationWithRelations($query)
     {
         return $query->onlyTrashed()->with('projects.locations', 'locations')->where('status', 'open')->orderBy('id', 'desc')->get();
